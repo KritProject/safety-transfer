@@ -302,7 +302,7 @@
 
     <script>
         // *** วาง URL ของ Web App ที่ได้จาก Google Apps Script ที่นี่ ***
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwNZ26BDvZmUDSYt5E9XmwT-1Py8wDyfA_RwpkFbw3E8TvBw1mroVtZiOatXgPcQux9_A/exec";
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwD0AqO7N8Xk79YJwnxKRrUI0hzeEdhGFJH9RmjbuBadEg5yRVA7zdzCVgeEYrdTFVEFA/exec";
 
         // Initial State
         let transfers = [];
@@ -627,7 +627,37 @@
         }
 
         // Initialize table
-        renderTable();
+        // ฟังก์ชันดึงข้อมูลจาก Google Sheet มาแสดงเมื่อโหลดหรือรีเฟรชหน้าเว็บ
+        function loadTransfersFromSheet() {
+            if (!SCRIPT_URL || SCRIPT_URL.includes("วาง_WEB_APP_URL")) {
+                renderTable();
+                return;
+            }
+
+            // แสดงไอคอนหมุนโหลดชั่วคราวขณะรอข้อมูลจาก Sheet
+            document.getElementById('stat-total').innerHTML = '<i class="fa-solid fa-spinner fa-spin text-lg"></i>';
+            document.getElementById('stat-pending').innerHTML = '<i class="fa-solid fa-spinner fa-spin text-lg"></i>';
+            document.getElementById('stat-completed').innerHTML = '<i class="fa-solid fa-spinner fa-spin text-lg"></i>';
+
+            fetch(SCRIPT_URL)
+                .then(response => response.json())
+                .then(data => {
+                    if (Array.isArray(data)) {
+                        transfers = data;
+                    }
+                    renderTable();
+                })
+                .catch(err => {
+                    console.error("Error loading data:", err);
+                    renderTable();
+                });
+        }
+
+        // เรียกโหลดข้อมูลทันทีที่เปิดหน้าเว็บขึ้นมา
+        loadTransfersFromSheet();
+    </script>
+</body>
+</html>
     </script>
 </body>
 </html>
