@@ -65,28 +65,193 @@
         }
 
         @media print {
-            body * {
-                visibility: hidden;
+
+            @page {
+                size: A4 portrait;
+                margin: 8mm 12mm 8mm 12mm;
             }
 
-            #printable-area,
-            #printable-area * {
-                visibility: visible;
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: white !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            /* ซ่อนทุกอย่างบนหน้าเว็บ ยกเว้น printable-area */
+            nav,
+            main,
+            #messageModal,
+            #receiveModal {
+                display: none !important;
             }
 
             #printable-area {
                 display: block !important;
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                background: #fff;
-                padding: 10mm 15mm;
+                width: 100% !important;
+                background: #ffffff !important;
+                font-family: 'Sarabun', sans-serif !important;
+                color: #0f172a !important;
+                padding: 0 !important;
             }
 
-            @page {
-                size: A4 portrait;
-                margin: 5mm 10mm;
+            /* คลาส CSS จากตัวอย่างฟอร์ม */
+            .p-hospitallogo {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                gap: 15px;
+                margin-bottom: 6px;
+            }
+
+            .p-hospital-logo {
+                height: 55px;
+                object-fit: contain;
+            }
+
+            .p-doc-header {
+                display: flex;
+                align-items: center;
+                border-bottom: 2px solid #0284c7;
+                padding-bottom: 8px;
+                margin-bottom: 10px;
+            }
+
+            .p-header-title {
+                flex-grow: 1;
+            }
+
+            .p-header-title h1 {
+                margin: 0;
+                font-size: 16px;
+                color: #0369a1;
+                font-weight: 700;
+            }
+
+            .p-header-title p {
+                margin: 2px 0 0 0;
+                font-size: 11.5px;
+                color: #475569;
+            }
+
+            .p-header-meta {
+                text-align: right;
+                font-size: 11.5px;
+            }
+
+            .p-doc-badge {
+                background: #e0f2fe;
+                color: #0369a1;
+                padding: 3px 6px;
+                border-radius: 4px;
+                font-weight: 700;
+                display: inline-block;
+                margin-bottom: 2px;
+            }
+
+            .p-section-header {
+                background-color: #f0f9ff;
+                border-left: 4px solid #0284c7;
+                padding: 4px 8px;
+                font-weight: 600;
+                font-size: 12px;
+                color: #0369a1;
+                margin: 8px 0 5px 0;
+            }
+
+            .p-grid-2 {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 4px 16px;
+                padding: 0 4px;
+                font-size: 12px;
+            }
+
+            .p-info-row {
+                display: flex;
+                align-items: baseline;
+            }
+
+            .p-info-label {
+                width: 130px;
+                font-weight: 600;
+                color: #334155;
+                flex-shrink: 0;
+            }
+
+            .p-info-val {
+                flex-grow: 1;
+                border-bottom: 1px dotted #94a3b8;
+                color: #0f172a;
+            }
+
+            table.p-vs-table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 11px;
+                margin-top: 4px;
+            }
+
+            table.p-vs-table th,
+            table.p-vs-table td {
+                border: 1px solid #cbd5e1;
+                padding: 4px;
+                text-align: center;
+            }
+
+            table.p-vs-table th {
+                background-color: #f8fafc;
+                color: #334155;
+                font-weight: 600;
+            }
+
+            .p-box-note {
+                border: 1px solid #cbd5e1;
+                background-color: #fafbfc;
+                border-radius: 4px;
+                padding: 6px 8px;
+                font-size: 11.5px;
+                color: #1e293b;
+                min-height: 28px;
+            }
+
+            .p-sign-area {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 14px;
+                padding: 0 20px;
+            }
+
+            .p-sign-col {
+                width: 44%;
+                text-align: center;
+                font-size: 11.5px;
+            }
+
+            .p-sig-img-container {
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .p-sig-img {
+                max-height: 38px;
+                max-width: 140px;
+                object-fit: contain;
+                display: block;
+                margin: 0 auto;
+            }
+
+            .p-sign-line {
+                border-top: 1px dotted #64748b;
+                margin-top: 4px;
+                padding-top: 3px;
             }
         }
     </style>
@@ -499,95 +664,99 @@
         </div>
     </div>
 
-    <!-- โครงร่างเอกสารสำหรับพิมพ์ A4 ตามตัวอย่าง -->
-    <div id="printable-area" style="font-family: 'Prompt', sans-serif;">
-        <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 8px;">
+    <!-- โครงร่างเอกสารสำหรับพิมพ์ A4 (ดีไซน์ตรงตามแบบฟอร์มตัวอย่าง) -->
+    <div id="printable-area">
+        <!-- Logo -->
+        <div class="p-hospitallogo">
             <img src="https://scontent.fphs3-1.fna.fbcdn.net/v/t39.30808-6/847033225_1088261284249021_8343004459752620171_n.jpg?stp=dst-jpg_tt6&cstp=mx286x259&ctp=s286x259&_nc_cat=111&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=5Lbo7bpNd2UQ7kNvwGXdXJE&_nc_oc=Adq23XWIL5UoxO4sf1ZRjE0mK3zVehtsFc7kKZjpJaYl1INckB0ZMVV493CO7HdL9Aw&_nc_zt=23&_nc_ht=scontent.fphs3-1.fna&_nc_gid=mZKHve8r9AddKowjGSyzsA&_nc_ss=7b2a8&oh=00_AQMnwFzc7NCNqVNt7VC7H90LjPLBzILPrFnIOYALM2U1Zg&oe=6AD31382"
-                style="height: 60px; object-fit: contain;">
+                alt="Hospital Logo" class="p-hospital-logo">
             <img src="https://scontent.fphs3-1.fna.fbcdn.net/v/t39.30808-6/847804637_1088260367582446_1862092916521213057_n.jpg?stp=dst-jpg_tt6&cstp=mx500x500&ctp=s500x500&_nc_cat=101&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=0uIWvXKGYHIQ7kNvwGNCwjj&_nc_oc=AdqIptEVGERlAwcwKqVjPkiez3GxZgPOAXCOZCT_P7bM4ewsotEC9XmtcvyB3q_ELcU&_nc_zt=23&_nc_ht=scontent.fphs3-1.fna&_nc_gid=ksxIkcbCIiX8R7z8LYUe7g&_nc_ss=7b2a8&oh=00_AQNfYOaQowSA6gUm14v0inG8CntQ-eLK7UCsDyi1WWmE7w&oe=6AD2E9CA"
-                style="height: 60px; object-fit: contain;">
+                alt="Hospital Logo" class="p-hospital-logo">
             <img src="https://scontent.fphs3-1.fna.fbcdn.net/v/t39.30808-6/843206031_1088260364249113_7900190074922328156_n.jpg?stp=dst-jpg_tt6&cstp=mx591x591&ctp=s591x591&_nc_cat=103&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=vYQ1FN63jzkQ7kNvwG49p3o&_nc_oc=Ado_91VXpnxjPRJ9tKaOqqC1P4p2kS08O2QWhGszZZPjVqY8R8vwrSEVNz-TWXMJgjw&_nc_zt=23&_nc_ht=scontent.fphs3-1.fna&_nc_gid=jtTNeHjiQKteTxYGiZ53WQ&_nc_ss=7b2a8&oh=00_AQOufsQLhtdLTs4293U3HoJROdZXOgWS6JAe9cx0wKnnUg&oe=6AD31642"
-                style="height: 60px; object-fit: contain;">
+                alt="Hospital Logo" class="p-hospital-logo">
         </div>
-        <div
-            style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #0284c7; padding-bottom: 8px; margin-bottom: 10px;">
-            <div>
-                <h1 style="margin: 0; font-size: 16px; color: #0369a1; font-weight: 700;">
-                    แบบบันทึกและประเมินความปลอดภัยในการส่งต่อผู้ป่วย</h1>
-                <p style="margin: 2px 0 0; font-size: 12px; color: #475569;">
-                    กลุ่มงานการพยาบาลผู้ป่วยอุบัติเหตุและฉุกเฉิน ภารกิจด้านการพยาบาล โรงพยาบาลพุทธชินราช พิษณุโลก</p>
+        <div class="p-doc-header">
+            <div class="p-header-title">
+                <h1>แบบบันทึกและประเมินความปลอดภัยในการส่งต่อผู้ป่วย</h1>
+                <p>กลุ่มงานการพยาบาลผู้ป่วยอุบัติเหตุและฉุกเฉิน</p>
+                <p>ภารกิจด้านการพยาบาล โรงพยาบาลพุทธชินราช พิษณุโลก</p>
             </div>
-            <div style="text-align: right; font-size: 11px;">
-                <span
-                    style="background: #e0f2fe; color: #0369a1; padding: 2px 6px; border-radius: 4px; font-weight: 700;"
-                    id="p-id">ID: -</span>
+            <div class="p-header-meta">
+                <span class="p-doc-badge" id="p-id">ID: -</span>
                 <div id="p-date">วันที่: -</div>
                 <div id="p-time">เวลา: -</div>
             </div>
         </div>
-        <div
-            style="background: #f0f9ff; border-left: 4px solid #0284c7; padding: 3px 8px; font-weight: 600; font-size: 12px; color: #0369a1; margin: 8px 0 5px;">
-            1. ข้อมูลทั่วไปผู้ป่วยและการส่งต่อ (Patient & Route)</div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; font-size: 12px;">
-            <div><strong>ชื่อ-นามสกุล:</strong> <span id="p-name">-</span></div>
-            <div><strong>อายุ:</strong> <span id="p-age">-</span> ปี</div>
-            <div><strong>HN:</strong> <span id="p-hn" style="font-weight: bold;">-</span></div>
-            <div><strong>ระดับความเร่งด่วน:</strong> <span id="p-urgency" style="font-weight: bold;">-</span></div>
-            <div><strong>ต้นทาง:</strong> <span id="p-origin">-</span></div>
-            <div><strong>ปลายทาง:</strong> <span id="p-dest">-</span></div>
-            <div style="grid-column: span 2;"><strong>ระดับการส่งต่อ:</strong> <span id="p-level">-</span></div>
-            <div style="grid-column: span 2;"><strong>การวินิจฉัยโรค:</strong> <span id="p-diag">-</span></div>
+
+        <!-- 1. Patient Info -->
+        <div class="p-section-header">1. ข้อมูลทั่วไปผู้ป่วยและการส่งต่อ (Patient & Route)</div>
+        <div class="p-grid-2">
+            <div class="p-info-row"><span class="p-info-label">ชื่อ-นามสกุล:</span><span class="p-info-val"
+                    id="p-name">-</span></div>
+            <div class="p-info-row"><span class="p-info-label">อายุ:</span><span class="p-info-val"><span
+                        id="p-age">-</span> ปี</span></div>
+            <div class="p-info-row"><span class="p-info-label">เลขประจำตัวผู้ป่วย (HN):</span><span
+                    class="p-info-val"><strong id="p-hn">-</strong></span></div>
+            <div class="p-info-row"><span class="p-info-label">ระดับความเร่งด่วน:</span><span class="p-info-val"
+                    style="font-weight: bold;" id="p-urgency">-</span></div>
+            <div class="p-info-row"><span class="p-info-label">หน่วยงานต้นทาง:</span><span class="p-info-val"
+                    id="p-origin">-</span></div>
+            <div class="p-info-row"><span class="p-info-label">ระดับการส่งต่อ:</span><span class="p-info-val"
+                    id="p-level">-</span></div>
+            <div class="p-info-row"><span class="p-info-label">หน่วยงานปลายทาง:</span><span class="p-info-val"
+                    id="p-dest">-</span></div>
         </div>
-        <div
-            style="background: #f0f9ff; border-left: 4px solid #0284c7; padding: 3px 8px; font-weight: 600; font-size: 12px; color: #0369a1; margin: 8px 0 5px;">
-            2. บันทึกสัญญาณชีพขณะนำส่ง (Vital Signs Monitoring)</div>
-        <table style="width: 100%; border-collapse: collapse; font-size: 11px; text-align: center;">
+        <div style="margin-top: 4px; padding: 0 4px;">
+            <div class="p-info-row"><span class="p-info-label">การวินิจฉัยโรค (Diagnosis):</span><span
+                    class="p-info-val" id="p-diag">-</span></div>
+        </div>
+
+        <!-- 2. Vital Signs Table -->
+        <div class="p-section-header">2. บันทึกสัญญาณชีพขณะนำส่ง (Vital Signs Monitoring)</div>
+        <table class="p-vs-table">
             <thead>
-                <tr style="background: #f8fafc;">
-                    <th style="border: 1px solid #cbd5e1; padding: 4px;">ครั้งที่</th>
-                    <th style="border: 1px solid #cbd5e1; padding: 4px;">เวลา</th>
-                    <th style="border: 1px solid #cbd5e1; padding: 4px;">BP (mmHg)</th>
-                    <th style="border: 1px solid #cbd5e1; padding: 4px;">HR/PR (/min)</th>
-                    <th style="border: 1px solid #cbd5e1; padding: 4px;">RR (/min)</th>
-                    <th style="border: 1px solid #cbd5e1; padding: 4px;">O2 Sat (%)</th>
+                <tr>
+                    <th style="width: 10%;">ครั้งที่</th>
+                    <th style="width: 18%;">เวลา (Time)</th>
+                    <th style="width: 20%;">BP (mmHg)</th>
+                    <th style="width: 18%;">HR/PR (/min)</th>
+                    <th style="width: 16%;">RR (/min)</th>
+                    <th style="width: 18%;">O2 Sat (%)</th>
                 </tr>
             </thead>
             <tbody id="p-vs-body"></tbody>
         </table>
-        <div
-            style="background: #f0f9ff; border-left: 4px solid #0284c7; padding: 3px 8px; font-weight: 600; font-size: 12px; color: #0369a1; margin: 8px 0 5px;">
-            3. การให้สารน้ำและยาขณะนำส่ง (IV Fluids & Medications)</div>
-        <div id="p-fluids-meds"
-            style="border: 1px solid #cbd5e1; background: #fafbfc; border-radius: 4px; padding: 5px 8px; font-size: 12px;">
-            -</div>
-        <div
-            style="background: #f0f9ff; border-left: 4px solid #0284c7; padding: 3px 8px; font-weight: 600; font-size: 12px; color: #0369a1; margin: 8px 0 5px;">
-            4. เหตุการณ์ไม่พึงประสงค์ขณะส่งต่อ (Adverse Events)</div>
-        <div id="p-adverse"
-            style="border: 1px solid #cbd5e1; background: #fafbfc; border-radius: 4px; padding: 5px 8px; font-size: 12px;">
-            -</div>
-        <div
-            style="background: #f0f9ff; border-left: 4px solid #0284c7; padding: 3px 8px; font-weight: 600; font-size: 12px; color: #0369a1; margin: 8px 0 5px;">
-            5. การประเมินสภาพแรกรับของหน่วยงานปลายทาง (Destination Assessment)</div>
-        <div id="p-assessment"
-            style="border: 1px solid #cbd5e1; background: #fafbfc; border-radius: 4px; padding: 5px 8px; font-size: 12px;">
-            -</div>
-        <div style="display: flex; justify-content: space-between; margin-top: 15px; padding: 0 20px;">
-            <div style="width: 44%; text-align: center; font-size: 12px;">
-                <div style="height: 35px; display: flex; align-items: center; justify-content: center;"
-                    id="p-sender-sig-box"></div>
-                <div style="border-top: 1px dotted #64748b; padding-top: 3px;" id="p-sender-line">(
+
+        <!-- 3. IV Fluids & Medications -->
+        <div class="p-section-header">3. การให้สารน้ำและยาขณะนำส่ง (IV Fluids & Medications)</div>
+        <div class="p-box-note" id="p-fluids-meds">-</div>
+
+        <!-- 4. Adverse Event -->
+        <div class="p-section-header">4. เหตุการณ์ไม่พึงประสงค์ขณะส่งต่อ (Adverse Events)</div>
+        <div class="p-box-note" id="p-adverse">-</div>
+
+        <!-- 5. Destination Assessment -->
+        <div class="p-section-header">5. การประเมินสภาพแรกรับของหน่วยงานปลายทาง (Destination Assessment)</div>
+        <div class="p-box-note" id="p-assessment">-</div>
+
+        <!-- 6. Signatures -->
+        <div class="p-sign-area">
+            <div class="p-sign-col">
+                <div class="p-sig-img-container" id="p-sender-sig-box"></div>
+                <div class="p-sign-line" id="p-sender-line">(
                     ............................................................ )</div>
-                <div style="font-weight: 600;">พยาบาลผู้นำส่ง (ต้นทาง)</div>
-                <div style="font-size: 11px; color: #64748b;" id="p-sender-date">วันที่: - เวลา: -</div>
+                <div style="font-weight: 600;" id="p-sender-dept-title">พยาบาลผู้นำส่ง</div>
+                <div style="font-size: 11px; color: #64748b; margin-top: 2px;" id="p-sender-date">วันที่: - เวลา: -
+                </div>
             </div>
-            <div style="width: 44%; text-align: center; font-size: 12px;">
-                <div style="height: 35px; display: flex; align-items: center; justify-content: center;"
-                    id="p-receiver-sig-box"></div>
-                <div style="border-top: 1px dotted #64748b; padding-top: 3px;" id="p-receiver-line">(
+
+            <div class="p-sign-col">
+                <div class="p-sig-img-container" id="p-receiver-sig-box"></div>
+                <div class="p-sign-line" id="p-receiver-line">(
                     ............................................................ )</div>
-                <div style="font-weight: 600;">พยาบาลผู้รับผู้ป่วย (ปลายทาง)</div>
-                <div style="font-size: 11px; color: #64748b;" id="p-receiver-date">วันที่: - เวลา: -</div>
+                <div style="font-weight: 600;" id="p-receiver-dept-title">พยาบาลผู้รับผู้ป่วย</div>
+                <div style="font-size: 11px; color: #64748b; margin-top: 2px;" id="p-receiver-date">วันที่: - เวลา: -
+                </div>
             </div>
         </div>
     </div>
@@ -1155,15 +1324,39 @@
             document.getElementById('p-adverse').textContent = data.adverseEvent || 'ไม่มีเหตุการณ์ไม่พึงประสงค์ (อาการและสัญญาณชีพคงที่)';
             document.getElementById('p-assessment').textContent = data.assessment || '-';
 
+            // แสดงชื่อแผนกต้นทางและปลายทางตรงส่วนลงชื่อ
+            const originText = data.originDept ? ` (${data.originDept})` : '';
+            const destText = data.destDept ? ` (${data.destDept})` : '';
+            document.getElementById('p-sender-dept-title').textContent = `พยาบาลผู้นำส่ง${originText}`;
+            document.getElementById('p-receiver-dept-title').textContent = `พยาบาลผู้รับผู้ป่วย${destText}`;
+
             document.getElementById('p-sender-line').textContent = data.senderName ? `( ${data.senderName} )` : '( ............................................................ )';
             document.getElementById('p-sender-date').textContent = `วันที่: ${data.dateStr || '-'} เวลา: ${data.time || '-'} น.`;
-            document.getElementById('p-sender-sig-box').innerHTML = (data.senderSig && data.senderSig.length > 100) ? `<img src="${data.senderSig}" style="max-height: 35px;">` : '';
 
-            document.getElementById('p-receiver-line').textContent = data.receiverName ? `( ${data.receiverName} )` : '( ............................................................ )';
+            // ลายเซ็นและชื่อผู้นำส่ง (ต้นทาง)
+            document.getElementById('p-sender-line').textContent = data.senderName ? `( พว. ${data.senderName} )` : '( ............................................................ )';
+            document.getElementById('p-sender-date').textContent = `วันที่: ${data.dateStr || '-'} เวลา: ${data.time || '-'} น.`;
+            const sBox = document.getElementById('p-sender-sig-box');
+            if (data.senderSig && data.senderSig.length > 100) {
+                sBox.innerHTML = `<img src="${data.senderSig}" class="p-sig-img" alt="ลายมือชื่อผู้นำส่ง">`;
+            } else {
+                sBox.innerHTML = '';
+            }
+
+            // ลายเซ็นและชื่อผู้รับผู้ป่วย (ปลายทาง)
+            document.getElementById('p-receiver-line').textContent = data.receiverName ? `( พว. ${data.receiverName} )` : '( ............................................................ )';
             document.getElementById('p-receiver-date').textContent = `วันที่: ${data.dateStr || '-'} เวลา: ${data.time || '-'} น.`;
-            document.getElementById('p-receiver-sig-box').innerHTML = (data.receiverSig && data.receiverSig.length > 100) ? `<img src="${data.receiverSig}" style="max-height: 35px;">` : '';
+            const rBox = document.getElementById('p-receiver-sig-box');
+            if (data.receiverSig && data.receiverSig.length > 100) {
+                rBox.innerHTML = `<img src="${data.receiverSig}" class="p-sig-img" alt="ลายมือชื่อผู้รับ">`;
+            } else {
+                rBox.innerHTML = '';
+            }
 
-            window.print();
+            // หน่วงเวลาให้ภาพเรนเดอร์สมบูรณ์ก่อนเปิดหน้าต่างพิมพ์
+            setTimeout(() => {
+                window.print();
+            }, 150);
         };
 
     </script>
