@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,29 +31,37 @@
         }
     </script>
     <style>
-        body { font-family: 'Prompt', sans-serif; }
+        body {
+            font-family: 'Prompt', sans-serif;
+        }
+
         .glass-panel {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
+
         .custom-scrollbar::-webkit-scrollbar {
             height: 8px;
             width: 8px;
         }
+
         .custom-scrollbar::-webkit-scrollbar-track {
-            background: #f1f5f9; 
+            background: #f1f5f9;
             border-radius: 4px;
         }
+
         .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #cbd5e1; 
+            background: #cbd5e1;
             border-radius: 4px;
         }
+
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8; 
+            background: #94a3b8;
         }
     </style>
 </head>
+
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
 
     <!-- Navbar -->
@@ -69,8 +78,10 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-4">
-                    <span class="text-sm hidden sm:block"><i class="fa-regular fa-clock mr-1"></i> <span id="clock"></span></span>
-                    <div class="w-8 h-8 rounded-full bg-medical-600 flex items-center justify-center border border-medical-500 shadow-inner">
+                    <span class="text-sm hidden sm:block"><i class="fa-regular fa-clock mr-1"></i> <span
+                            id="clock"></span></span>
+                    <div
+                        class="w-8 h-8 rounded-full bg-medical-600 flex items-center justify-center border border-medical-500 shadow-inner">
                         <i class="fa-solid fa-user-nurse text-sm"></i>
                     </div>
                 </div>
@@ -80,10 +91,11 @@
 
     <!-- Main Container -->
     <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
-        
+
         <!-- Stats Summary -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-            <div class="glass-panel rounded-xl shadow-sm p-5 border-l-4 border-medical-500 flex items-center justify-between transition hover:-translate-y-1 hover:shadow-md duration-300">
+            <div
+                class="glass-panel rounded-xl shadow-sm p-5 border-l-4 border-medical-500 flex items-center justify-between transition hover:-translate-y-1 hover:shadow-md duration-300">
                 <div>
                     <p class="text-sm text-slate-500 font-medium mb-1">คำขอส่งต่อทั้งหมด</p>
                     <h2 class="text-3xl font-bold text-slate-700" id="stat-total">0</h2>
@@ -92,7 +104,8 @@
                     <i class="fa-solid fa-file-medical text-xl"></i>
                 </div>
             </div>
-            <div class="glass-panel rounded-xl shadow-sm p-5 border-l-4 border-amber-500 flex items-center justify-between transition hover:-translate-y-1 hover:shadow-md duration-300">
+            <div
+                class="glass-panel rounded-xl shadow-sm p-5 border-l-4 border-amber-500 flex items-center justify-between transition hover:-translate-y-1 hover:shadow-md duration-300">
                 <div>
                     <p class="text-sm text-slate-500 font-medium mb-1">รอดำเนินการ (รอรับ)</p>
                     <h2 class="text-3xl font-bold text-slate-700" id="stat-pending">0</h2>
@@ -101,7 +114,8 @@
                     <i class="fa-solid fa-hourglass-half text-xl"></i>
                 </div>
             </div>
-            <div class="glass-panel rounded-xl shadow-sm p-5 border-l-4 border-emerald-500 flex items-center justify-between transition hover:-translate-y-1 hover:shadow-md duration-300">
+            <div
+                class="glass-panel rounded-xl shadow-sm p-5 border-l-4 border-emerald-500 flex items-center justify-between transition hover:-translate-y-1 hover:shadow-md duration-300">
                 <div>
                     <p class="text-sm text-slate-500 font-medium mb-1">เสร็จสิ้นแล้ว</p>
                     <h2 class="text-3xl font-bold text-slate-700" id="stat-completed">0</h2>
@@ -113,38 +127,52 @@
         </div>
 
         <div class="flex flex-col gap-8">
-            
+
             <!-- Form Section -->
             <div class="w-full">
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
                     <div class="bg-slate-50 px-6 py-4 border-b border-slate-200 flex justify-between items-center">
-                        <h2 class="font-semibold text-slate-800"><i class="fa-solid fa-plus-circle text-medical-600 mr-2"></i>สร้างคำขอส่งต่อใหม่ (Safety Transfer)</h2>
+                        <h2 class="font-semibold text-slate-800"><i
+                                class="fa-solid fa-plus-circle text-medical-600 mr-2"></i>สร้างคำขอส่งต่อใหม่ (Safety
+                            Transfer)</h2>
                     </div>
                     <div class="p-6">
                         <form id="transfer-form" class="space-y-6">
-                            
+
                             <!-- 1. Basic Info -->
                             <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-4">
-                                <h3 class="font-medium text-slate-700 border-b border-slate-200 pb-2 mb-3"><i class="fa-regular fa-id-card mr-2"></i>1. ข้อมูลทั่วไปผู้ป่วย</h3>
+                                <h3 class="font-medium text-slate-700 border-b border-slate-200 pb-2 mb-3"><i
+                                        class="fa-regular fa-id-card mr-2"></i>1. ข้อมูลทั่วไปผู้ป่วย</h3>
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                     <div class="md:col-span-2">
-                                        <label class="block text-sm font-medium text-slate-700 mb-1" for="patientName">ชื่อ-นามสกุล ผู้ป่วย <span class="text-red-500">*</span></label>
-                                        <input type="text" id="patientName" required placeholder="นาย/นาง/นางสาว..." class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-medical-500 focus:border-medical-500 transition outline-none">
+                                        <label class="block text-sm font-medium text-slate-700 mb-1"
+                                            for="patientName">ชื่อ-นามสกุล ผู้ป่วย <span
+                                                class="text-red-500">*</span></label>
+                                        <input type="text" id="patientName" required placeholder="นาย/นาง/นางสาว..."
+                                            class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-medical-500 focus:border-medical-500 transition outline-none">
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium text-slate-700 mb-1" for="patientAge">อายุ (ปี) <span class="text-red-500">*</span></label>
-                                        <input type="number" id="patientAge" required min="0" max="150" placeholder="เช่น 45" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-medical-500 focus:border-medical-500 transition outline-none">
+                                        <label class="block text-sm font-medium text-slate-700 mb-1"
+                                            for="patientAge">อายุ (ปี) <span class="text-red-500">*</span></label>
+                                        <input type="number" id="patientAge" required min="0" max="150"
+                                            placeholder="เช่น 45"
+                                            class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-medical-500 focus:border-medical-500 transition outline-none">
                                     </div>
                                 </div>
-                                
+
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                     <div>
-                                        <label class="block text-sm font-medium text-slate-700 mb-1" for="hn">รหัสประจำตัวผู้ป่วย (HN) <span class="text-red-500">*</span></label>
-                                        <input type="text" id="hn" required placeholder="เช่น 66-12345" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-medical-500 focus:border-medical-500 transition outline-none">
+                                        <label class="block text-sm font-medium text-slate-700 mb-1"
+                                            for="hn">รหัสประจำตัวผู้ป่วย (HN) <span
+                                                class="text-red-500">*</span></label>
+                                        <input type="text" id="hn" required placeholder="เช่น 66-12345"
+                                            class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-medical-500 focus:border-medical-500 transition outline-none">
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium text-slate-700 mb-1" for="originDept">จากหน่วยงาน <span class="text-red-500">*</span></label>
-                                        <select id="originDept" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-medical-500 focus:border-medical-500 transition outline-none bg-white">
+                                        <label class="block text-sm font-medium text-slate-700 mb-1"
+                                            for="originDept">จากหน่วยงาน <span class="text-red-500">*</span></label>
+                                        <select id="originDept" required
+                                            class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-medical-500 focus:border-medical-500 transition outline-none bg-white">
                                             <option value="" disabled selected>เลือกต้นทาง</option>
                                             <option value="แผนกฉุกเฉิน (ER)">แผนกฉุกเฉิน (ER)</option>
                                             <option value="แผนกผู้ป่วยนอก (OPD)">แผนกผู้ป่วยนอก (OPD)</option>
@@ -154,8 +182,10 @@
                                         </select>
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium text-slate-700 mb-1" for="destDept">ไปยังหน่วยงาน <span class="text-red-500">*</span></label>
-                                        <select id="destDept" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-medical-500 focus:border-medical-500 transition outline-none bg-white">
+                                        <label class="block text-sm font-medium text-slate-700 mb-1"
+                                            for="destDept">ไปยังหน่วยงาน <span class="text-red-500">*</span></label>
+                                        <select id="destDept" required
+                                            class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-medical-500 focus:border-medical-500 transition outline-none bg-white">
                                             <option value="" disabled selected>เลือกปลายทาง</option>
                                             <option value="หอผู้ป่วยวิกฤต (ICU)">หอผู้ป่วยวิกฤต (ICU)</option>
                                             <option value="ห้องผ่าตัด (OR)">ห้องผ่าตัด (OR)</option>
@@ -168,32 +198,60 @@
 
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
-                                        <label class="block text-sm font-medium text-slate-700 mb-1" for="diagnosis">การวินิจฉัยโรค (Diagnosis) <span class="text-red-500">*</span></label>
-                                        <input type="text" id="diagnosis" required placeholder="ระบุการวินิจฉัยโรค..." class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-medical-500 focus:border-medical-500 transition outline-none">
+                                        <label class="block text-sm font-medium text-slate-700 mb-1"
+                                            for="diagnosis">การวินิจฉัยโรค (Diagnosis) <span
+                                                class="text-red-500">*</span></label>
+                                        <input type="text" id="diagnosis" required placeholder="ระบุการวินิจฉัยโรค..."
+                                            class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-medical-500 focus:border-medical-500 transition outline-none">
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium text-slate-700 mb-1" for="urgency">ระดับความเร่งด่วน <span class="text-red-500">*</span></label>
+                                        <label class="block text-sm font-medium text-slate-700 mb-1"
+                                            for="urgency">ระดับความเร่งด่วน <span class="text-red-500">*</span></label>
                                         <div class="grid grid-cols-3 gap-2">
                                             <label class="cursor-pointer">
-                                                <input type="radio" name="urgency" value="ปกติ" class="peer sr-only" checked>
-                                                <div class="text-center px-2 py-2 rounded-lg border border-slate-200 text-sm peer-checked:bg-emerald-50 peer-checked:border-emerald-500 peer-checked:text-emerald-700 transition hover:bg-slate-50">ปกติ</div>
+                                                <input type="radio" name="urgency" value="ปกติ" class="peer sr-only"
+                                                    checked>
+                                                <div
+                                                    class="text-center px-2 py-2 rounded-lg border border-slate-200 text-sm peer-checked:bg-emerald-50 peer-checked:border-emerald-500 peer-checked:text-emerald-700 transition hover:bg-slate-50">
+                                                    ปกติ</div>
                                             </label>
                                             <label class="cursor-pointer">
                                                 <input type="radio" name="urgency" value="ด่วน" class="peer sr-only">
-                                                <div class="text-center px-2 py-2 rounded-lg border border-slate-200 text-sm peer-checked:bg-amber-50 peer-checked:border-amber-500 peer-checked:text-amber-700 transition hover:bg-slate-50">ด่วน</div>
+                                                <div
+                                                    class="text-center px-2 py-2 rounded-lg border border-slate-200 text-sm peer-checked:bg-amber-50 peer-checked:border-amber-500 peer-checked:text-amber-700 transition hover:bg-slate-50">
+                                                    ด่วน</div>
                                             </label>
                                             <label class="cursor-pointer">
                                                 <input type="radio" name="urgency" value="ฉุกเฉิน" class="peer sr-only">
-                                                <div class="text-center px-2 py-2 rounded-lg border border-slate-200 text-sm peer-checked:bg-red-50 peer-checked:border-red-500 peer-checked:text-red-700 transition hover:bg-slate-50 text-red-600 font-medium">ฉุกเฉิน</div>
+                                                <div
+                                                    class="text-center px-2 py-2 rounded-lg border border-slate-200 text-sm peer-checked:bg-red-50 peer-checked:border-red-500 peer-checked:text-red-700 transition hover:bg-slate-50 text-red-600 font-medium">
+                                                    ฉุกเฉิน</div>
                                             </label>
                                         </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <label class="block text-sm font-medium text-slate-700 mb-1"
+                                            for="transferLevel">ระดับการส่งต่อ (Transfer Level) <span
+                                                class="text-red-500">*</span></label>
+                                        <select id="transferLevel" required
+                                            class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-medical-500 outline-none bg-white text-sm">
+                                            <option value="" disabled selected>-- เลือกระดับตามหลักเกณฑ์ --</option>
+                                            <option value="Level 0">Level 0: ทั่วไป/ช่วยเหลือตัวเองได้ (Non-critical)
+                                            </option>
+                                            <option value="Level 1">Level 1: เฝ้าระวัง/มีสารน้ำหรือ O2 (BLS)</option>
+                                            <option value="Level 2">Level 2: กึ่งวิกฤต/ติดตามสัญญาณชีพต่อเนื่อง (ALS)
+                                            </option>
+                                            <option value="Level 3">Level 3: วิกฤต/ใช้เครื่องช่วยหายใจหรือยากระตุ้น
+                                                (Critical Care)</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- 2. Vital Signs During Transfer -->
                             <div class="bg-blue-50/50 p-4 rounded-xl border border-blue-100 space-y-4">
-                                <h3 class="font-medium text-blue-800 border-b border-blue-200 pb-2 mb-3"><i class="fa-solid fa-heart-pulse mr-2"></i>2. บันทึกสัญญาณชีพ (V/S) ขณะส่งต่อ</h3>
+                                <h3 class="font-medium text-blue-800 border-b border-blue-200 pb-2 mb-3"><i
+                                        class="fa-solid fa-heart-pulse mr-2"></i>2. บันทึกสัญญาณชีพ (V/S) ขณะส่งต่อ</h3>
                                 <div class="overflow-x-auto">
                                     <table class="w-full min-w-[600px] text-sm text-left">
                                         <thead class="text-xs text-slate-600 uppercase bg-blue-100/50">
@@ -212,34 +270,97 @@
                                     </table>
                                 </div>
                             </div>
+                            <!-- 3. IV Fluids -->
+                            <div class="bg-indigo-50/40 p-4 rounded-xl border border-indigo-100 space-y-4">
+                                <h3 class="font-medium text-indigo-900 border-b border-indigo-200 pb-2">
+                                    <i class="fa-solid fa-droplet mr-2 text-indigo-600"></i>การให้สารน้ำและยาขณะนำส่ง
+                                    (IV Fluids & Medications)
+                                </h3>
 
-                            <!-- 3. Adverse Event -->
+                                <!-- 1. ส่วนสารน้ำ -->
+                                <div class="space-y-2">
+                                    <div class="flex items-center justify-between">
+                                        <label class="text-sm font-semibold text-slate-700">สารน้ำทางหลอดเลือดดำ (IV
+                                            Fluids)</label>
+                                        <button type="button" onclick="addFluidRow()"
+                                            class="text-xs bg-indigo-600 hover:bg-indigo-700 text-white px-2.5 py-1 rounded-md transition shadow-sm flex items-center gap-1">
+                                            <i class="fa-solid fa-plus"></i> เพิ่มสารน้ำ
+                                        </button>
+                                    </div>
+                                    <div id="fluid-list" class="space-y-2">
+                                        <!-- รายการสารน้ำจะถูกแทรกที่นี่ -->
+                                    </div>
+                                </div>
+
+                                <!-- 2. ส่วนยา -->
+                                <div class="space-y-2 pt-2 border-t border-indigo-100">
+                                    <div class="flex items-center justify-between">
+                                        <label class="text-sm font-semibold text-slate-700">ยาที่ได้รับ / Continuous
+                                            Drip (Medications)</label>
+                                        <button type="button" onclick="addMedRow()"
+                                            class="text-xs bg-indigo-600 hover:bg-indigo-700 text-white px-2.5 py-1 rounded-md transition shadow-sm flex items-center gap-1">
+                                            <i class="fa-solid fa-plus"></i> เพิ่มยา
+                                        </button>
+                                    </div>
+                                    <div id="med-list" class="space-y-2">
+                                        <!-- รายการยาจะถูกแทรกที่นี่ -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 4. Adverse Event -->
                             <div class="bg-amber-50/50 p-4 rounded-xl border border-amber-100 space-y-4">
-                                <h3 class="font-medium text-amber-800 border-b border-amber-200 pb-2 mb-3"><i class="fa-solid fa-triangle-exclamation mr-2"></i>3. เหตุการณ์ไม่พึงประสงค์ (Adverse Event) ขณะส่งต่อ</h3>
+                                <h3 class="font-medium text-amber-800 border-b border-amber-200 pb-2 mb-3"><i
+                                        class="fa-solid fa-triangle-exclamation mr-2"></i>3. เหตุการณ์ไม่พึงประสงค์
+                                    (Adverse Event) ขณะส่งต่อ</h3>
                                 <div>
-                                    <textarea id="adverseEvent" rows="2" placeholder="ระบุเหตุการณ์ไม่พึงประสงค์ที่เกิดขึ้น (ถ้าไม่มีให้เว้นว่างหรือขีด -)..." class="w-full px-4 py-2 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition outline-none resize-none bg-white"></textarea>
+                                    <textarea id="adverseEvent" rows="2"
+                                        placeholder="ระบุเหตุการณ์ไม่พึงประสงค์ที่เกิดขึ้น (ถ้าไม่มีให้เว้นว่างหรือขีด -)..."
+                                        class="w-full px-4 py-2 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition outline-none resize-none bg-white"></textarea>
                                 </div>
                             </div>
 
-                            <!-- 4. Destination Assessment & Signature -->
+                            <!-- 5. Destination Assessment & Signature -->
                             <div class="bg-emerald-50/50 p-4 rounded-xl border border-emerald-100 space-y-4">
-                                <h3 class="font-medium text-emerald-800 border-b border-emerald-200 pb-2 mb-3"><i class="fa-solid fa-clipboard-check mr-2"></i>4. การประเมินของหน่วยงานปลายทาง</h3>
+                                <h3 class="font-medium text-emerald-800 border-b border-emerald-200 pb-2 mb-3"><i
+                                        class="fa-solid fa-clipboard-check mr-2"></i>4. การประเมินของหน่วยงานปลายทาง
+                                </h3>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
-                                        <label class="block text-sm font-medium text-slate-700 mb-1" for="assessment">ประเมินสภาพผู้ป่วยเมื่อแรกรับ</label>
-                                        <textarea id="assessment" rows="4" placeholder="บันทึกการประเมินสภาพผู้ป่วย..." class="w-full px-4 py-2 border border-emerald-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition outline-none resize-none bg-white"></textarea>
+                                        <label class="block text-sm font-medium text-slate-700 mb-1"
+                                            for="assessment">ประเมินสภาพผู้ป่วยเมื่อแรกรับ</label>
+                                        <textarea id="assessment" rows="4" placeholder="บันทึกการประเมินสภาพผู้ป่วย..."
+                                            class="w-full px-4 py-2 border border-emerald-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition outline-none resize-none bg-white"></textarea>
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium text-slate-700 mb-1">ลายมือชื่อผู้รับผู้ป่วย (Signature)</label>
-                                        <div class="border border-slate-300 rounded-lg bg-white overflow-hidden relative">
-                                            <canvas id="signaturePad" class="w-full h-[100px] cursor-crosshair touch-none"></canvas>
-                                            <button type="button" onclick="clearSignature()" class="absolute top-2 right-2 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs px-2 py-1 rounded shadow-sm transition"><i class="fa-solid fa-eraser mr-1"></i>ล้าง</button>
+                                        <label class="block text-sm font-medium text-slate-700 mb-1">ลายมือชื่อผู้นำส่ง
+                                            (ต้นทาง)</label>
+                                        <div
+                                            class="border border-slate-300 rounded-lg bg-white overflow-hidden relative">
+                                            <canvas id="senderSignaturePad"
+                                                class="w-full h-[90px] cursor-crosshair touch-none"></canvas>
+                                            <button type="button" onclick="clearSenderSignature()"
+                                                class="absolute top-2 right-2 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs px-2 py-1 rounded shadow-sm"><i
+                                                    class="fa-solid fa-eraser mr-1"></i>ล้าง</button>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label
+                                            class="block text-sm font-medium text-slate-700 mb-1">ลายมือชื่อผู้รับผู้ป่วย
+                                            (ปลายทาง)</label>
+                                        <div
+                                            class="border border-slate-300 rounded-lg bg-white overflow-hidden relative">
+                                            <canvas id="signaturePad"
+                                                class="w-full h-[90px] cursor-crosshair touch-none"></canvas>
+                                            <button type="button" onclick="clearSignature()"
+                                                class="absolute top-2 right-2 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs px-2 py-1 rounded shadow-sm transition"><i
+                                                    class="fa-solid fa-eraser mr-1"></i>ล้าง</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <button type="submit" id="submitBtn" class="w-full bg-medical-600 hover:bg-medical-700 text-white font-medium py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center gap-2 text-lg">
+                            <button type="submit" id="submitBtn"
+                                class="w-full bg-medical-600 hover:bg-medical-700 text-white font-medium py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center gap-2 text-lg">
                                 <i class="fa-solid fa-paper-plane"></i> บันทึกข้อมูลการส่งต่อ (Submit Transfer)
                             </button>
                         </form>
@@ -250,29 +371,43 @@
             <!-- Table Dashboard Section -->
             <div class="w-full">
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 h-full flex flex-col">
-                    <div class="bg-slate-50 px-6 py-4 border-b border-slate-200 flex justify-between items-center rounded-t-2xl">
-                        <h2 class="font-semibold text-slate-800"><i class="fa-solid fa-list-ul text-medical-600 mr-2"></i>รายการส่งต่อผู้ป่วยปัจจุบัน</h2>
+                    <div
+                        class="bg-slate-50 px-6 py-4 border-b border-slate-200 flex justify-between items-center rounded-t-2xl">
+                        <h2 class="font-semibold text-slate-800"><i
+                                class="fa-solid fa-list-ul text-medical-600 mr-2"></i>รายการส่งต่อผู้ป่วยปัจจุบัน</h2>
                         <div class="flex gap-2">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">รอรับ <span id="badge-pending" class="ml-1">0</span></span>
+                            <span
+                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">รอรับ
+                                <span id="badge-pending" class="ml-1">0</span></span>
                         </div>
                     </div>
-                    
+
                     <div class="overflow-x-auto flex-grow custom-scrollbar">
                         <table class="min-w-full divide-y divide-slate-200">
                             <thead class="bg-slate-50 sticky top-0 z-10">
                                 <tr>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">เวลา/รหัส</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">ผู้ป่วย/HN</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">เส้นทาง</th>
-                                    <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-slate-500 uppercase tracking-wider">สถานะ</th>
-                                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-slate-500 uppercase tracking-wider">จัดการ</th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                        เวลา/รหัส</th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                        ผู้ป่วย/HN</th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                        เส้นทาง</th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-center text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                        สถานะ</th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-right text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                        จัดการ</th>
                                 </tr>
                             </thead>
                             <tbody id="transfer-table-body" class="bg-white divide-y divide-slate-200">
                                 <!-- Data rows injected by JS -->
                             </tbody>
                         </table>
-                        
+
                         <!-- Empty State -->
                         <div id="empty-state" class="hidden flex-col items-center justify-center py-12 text-slate-400">
                             <i class="fa-solid fa-inbox text-4xl mb-3 opacity-50"></i>
@@ -285,24 +420,29 @@
     </main>
 
     <!-- Modal Message Box -->
-    <div id="messageModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center z-[100] opacity-0 transition-opacity duration-300">
-        <div class="bg-white rounded-2xl shadow-xl max-w-sm w-full mx-4 transform scale-95 transition-transform duration-300 flex flex-col overflow-hidden">
-            <div id="modalHeader" class="px-6 py-4 bg-medical-50 border-b border-medical-100 flex justify-between items-center">
+    <div id="messageModal"
+        class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center z-[100] opacity-0 transition-opacity duration-300">
+        <div
+            class="bg-white rounded-2xl shadow-xl max-w-sm w-full mx-4 transform scale-95 transition-transform duration-300 flex flex-col overflow-hidden">
+            <div id="modalHeader"
+                class="px-6 py-4 bg-medical-50 border-b border-medical-100 flex justify-between items-center">
                 <h3 id="modalTitle" class="font-semibold text-medical-800">แจ้งเตือน</h3>
-                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600"><i
+                        class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="px-6 py-6">
                 <p id="modalMessage" class="text-slate-600 text-center"></p>
             </div>
             <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 flex justify-end">
-                <button onclick="closeModal()" class="bg-medical-600 hover:bg-medical-700 text-white px-6 py-2 rounded-lg text-sm font-medium transition shadow-sm">ตกลง</button>
+                <button onclick="closeModal()"
+                    class="bg-medical-600 hover:bg-medical-700 text-white px-6 py-2 rounded-lg text-sm font-medium transition shadow-sm">ตกลง</button>
             </div>
         </div>
     </div>
 
     <script>
         // *** วาง URL ของ Web App ที่ได้จาก Google Apps Script ที่นี่ ***
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwD0AqO7N8Xk79YJwnxKRrUI0hzeEdhGFJH9RmjbuBadEg5yRVA7zdzCVgeEYrdTFVEFA/exec";
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwG4CGSE5HI9IQPswLTGqtSQQaOxpACIlN8dp3sBU-pr0i8fUudGzXFK3ZjcBhHgOQcTQ/exec";
 
         // Initial State
         let transfers = [];
@@ -318,7 +458,7 @@
         // Clock logic
         function updateClock() {
             const now = new Date();
-            document.getElementById('clock').textContent = now.toLocaleTimeString('th-TH', {hour: '2-digit', minute:'2-digit'});
+            document.getElementById('clock').textContent = now.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
         }
         setInterval(updateClock, 1000);
         updateClock();
@@ -327,7 +467,7 @@
         function showModal(title, message, isSuccess = true) {
             document.getElementById('modalTitle').textContent = title;
             document.getElementById('modalMessage').textContent = message;
-            
+
             const header = document.getElementById('modalHeader');
             if (isSuccess) {
                 header.className = 'px-6 py-4 bg-emerald-50 border-b border-emerald-100 flex justify-between items-center text-emerald-800';
@@ -360,7 +500,7 @@
         function initVSTable() {
             const tbody = document.getElementById('vs-table-body');
             tbody.innerHTML = '';
-            for(let i=1; i<=5; i++) {
+            for (let i = 1; i <= 5; i++) {
                 tbody.innerHTML += `
                     <tr class="border-b border-blue-50/50 bg-white hover:bg-blue-50/30">
                         <td class="px-3 py-2 font-medium text-slate-700">${i}</td>
@@ -379,7 +519,7 @@
         const canvas = document.getElementById('signaturePad');
         const ctx = canvas.getContext('2d');
         let isDrawing = false;
-        
+
         function resizeCanvas() {
             const rect = canvas.parentElement.getBoundingClientRect();
             canvas.width = rect.width;
@@ -394,7 +534,7 @@
 
         function getCoordinates(event) {
             const rect = canvas.getBoundingClientRect();
-            if(event.touches && event.touches.length > 0) {
+            if (event.touches && event.touches.length > 0) {
                 return {
                     x: event.touches[0].clientX - rect.left,
                     y: event.touches[0].clientY - rect.top
@@ -431,23 +571,23 @@
         canvas.addEventListener('mousemove', draw);
         canvas.addEventListener('mouseup', stopDrawing);
         canvas.addEventListener('mouseout', stopDrawing);
-        
-        canvas.addEventListener('touchstart', startDrawing, {passive: false});
-        canvas.addEventListener('touchmove', draw, {passive: false});
+
+        canvas.addEventListener('touchstart', startDrawing, { passive: false });
+        canvas.addEventListener('touchmove', draw, { passive: false });
         canvas.addEventListener('touchend', stopDrawing);
 
-        window.clearSignature = function() {
+        window.clearSignature = function () {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
         };
 
         // Render Table Dashboard
         function renderTable() {
             tableBody.innerHTML = '';
-            
+
             const total = transfers.length;
             const pending = transfers.filter(t => t.status === 'รอรับ').length;
             const completed = transfers.filter(t => t.status === 'เสร็จสิ้น').length;
-            
+
             document.getElementById('stat-total').textContent = total;
             document.getElementById('stat-pending').textContent = pending;
             document.getElementById('stat-completed').textContent = completed;
@@ -458,13 +598,13 @@
                 emptyState.classList.add('flex');
                 return;
             }
-            
+
             emptyState.classList.add('hidden');
             emptyState.classList.remove('flex');
 
             const urgencyWeight = { 'ฉุกเฉิน': 3, 'ด่วน': 2, 'ปกติ': 1 };
             const statusWeight = { 'รอรับ': 3, 'รับแล้ว': 2, 'เสร็จสิ้น': 1 };
-            
+
             const sortedTransfers = [...transfers].sort((a, b) => {
                 if (statusWeight[b.status] !== statusWeight[a.status]) {
                     return statusWeight[b.status] - statusWeight[a.status];
@@ -475,7 +615,7 @@
             sortedTransfers.forEach(transfer => {
                 const tr = document.createElement('tr');
                 tr.className = 'hover:bg-slate-50 transition-colors group';
-                
+
                 let urgencyBadge = '';
                 if (transfer.urgency === 'ฉุกเฉิน') urgencyBadge = '<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800"><i class="fa-solid fa-triangle-exclamation mr-1 text-[10px]"></i> ฉุกเฉิน</span>';
                 else if (transfer.urgency === 'ด่วน') urgencyBadge = '<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-800">ด่วน</span>';
@@ -493,6 +633,9 @@
                     statusBadge = '<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800"><i class="fa-solid fa-check text-[10px]"></i> เสร็จสิ้น</span>';
                     actionBtn = `<span class="text-xs text-slate-400 italic">ดำเนินการแล้ว</span>`;
                 }
+
+                const printBtn = `<button onclick="printOfficialDoc('${transfer.id}')" title="พิมพ์ใบส่งต่อผู้ป่วย (A4)" class="text-slate-500 hover:text-medical-600 p-1.5 rounded-lg hover:bg-medical-50 transition"><i class="fa-solid fa-print text-sm"></i></button>`;
+                const deleteBtn = `<button onclick="openConfirmModal('${transfer.id}', '${transfer.patientName}')" title="ลบรายการ" class="text-slate-400 hover:text-red-600 p-1.5 rounded-lg hover:bg-red-50 transition"><i class="fa-regular fa-trash-can text-sm"></i></button>`;
 
                 tr.innerHTML = `
                     <td class="px-6 py-4 whitespace-nowrap">
@@ -517,6 +660,8 @@
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-right font-medium">
                         ${actionBtn}
+                        ${printBtn}
+                        ${deleteBtn}
                     </td>
                 `;
                 tableBody.appendChild(tr);
@@ -524,12 +669,12 @@
         }
 
         // Update status
-        window.updateStatus = function(id, newStatus) {
+        window.updateStatus = function (id, newStatus) {
             const index = transfers.findIndex(t => t.id === id);
             if (index > -1) {
                 transfers[index].status = newStatus;
                 renderTable();
-                
+
                 let msg = '';
                 if (newStatus === 'รับแล้ว') msg = 'หน่วยงานปลายทางได้รับทราบและกำลังเตรียมรับผู้ป่วยแล้ว';
                 if (newStatus === 'เสร็จสิ้น') msg = 'กระบวนการส่งต่อผู้ป่วยเสร็จสมบูรณ์';
@@ -538,9 +683,9 @@
         };
 
         // Form Submit with Integration
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             const patientName = document.getElementById('patientName').value.trim();
             const patientAge = document.getElementById('patientAge').value.trim();
             const hn = document.getElementById('hn').value.trim();
@@ -548,14 +693,30 @@
             const destDept = document.getElementById('destDept').value;
             const diagnosis = document.getElementById('diagnosis').value.trim();
             const urgency = document.querySelector('input[name="urgency"]:checked').value;
-            
-            if(originDept === destDept) {
+
+            // รวมสารน้ำทุกรายการที่กรอก คั่นด้วยเครื่องหมายจุลภาค (,)
+            const fluidsList = [];
+            document.querySelectorAll('.fluid-item').forEach(input => {
+                const val = input.value.trim();
+                if (val) fluidsList.push(val);
+            });
+            const ivFluidsText = fluidsList.length > 0 ? fluidsList.join(', ') : '-';
+
+            // รวมยาทุกรายการที่กรอก คั่นด้วยเครื่องหมายจุลภาค (,)
+            const medsList = [];
+            document.querySelectorAll('.med-item').forEach(input => {
+                const val = input.value.trim();
+                if (val) medsList.push(val);
+            });
+            const medsText = medsList.length > 0 ? medsList.join(', ') : '-';
+
+            if (originDept === destDept) {
                 showModal('ข้อผิดพลาด', 'หน่วยงานต้นทางและปลายทางไม่สามารถเป็นหน่วยงานเดียวกันได้', false);
                 return;
             }
 
             const vsData = [];
-            for(let i=1; i<=5; i++) {
+            for (let i = 1; i <= 5; i++) {
                 vsData.push({
                     time: document.getElementById(`vs-time-${i}`).value,
                     bp: document.getElementById(`vs-bp-${i}`).value,
@@ -564,13 +725,16 @@
                     o2: document.getElementById(`vs-o2-${i}`).value,
                 });
             }
-            
+
             const adverseEvent = document.getElementById('adverseEvent').value.trim();
             const assessment = document.getElementById('assessment').value.trim();
+            const transferLevel = document.getElementById('transferLevel').value;
+            const senderSig = document.getElementById('senderSignaturePad').toDataURL();
+            const receiverSig = document.getElementById('receiverSignaturePad').toDataURL();
 
             const newTransfer = {
                 id: 'TRF-' + Math.floor(1000 + Math.random() * 9000),
-                time: new Date().toLocaleTimeString('th-TH', {hour: '2-digit', minute:'2-digit'}),
+                time: new Date().toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' }),
                 patientName,
                 age: patientAge,
                 hn,
@@ -578,9 +742,14 @@
                 destDept,
                 diagnosis,
                 urgency,
+                transferLevel,
+                ivFluids: ivFluidsText,
+                medications: medsText,
                 vsData,
                 adverseEvent,
                 assessment,
+                senderSig,
+                receiverSig,
                 status: 'รอรับ'
             };
 
@@ -596,17 +765,17 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(newTransfer)
                 })
-                .then(() => {
-                    handleSuccess(newTransfer);
-                })
-                .catch(err => {
-                    console.error(err);
-                    handleSuccess(newTransfer); // บันทึกในหน้าจอต่อไปแม้เกิดข้อผิดพลาด
-                })
-                .finally(() => {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalBtnContent;
-                });
+                    .then(() => {
+                        handleSuccess(newTransfer);
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        handleSuccess(newTransfer); // บันทึกในหน้าจอต่อไปแม้เกิดข้อผิดพลาด
+                    })
+                    .finally(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnContent;
+                    });
             } else {
                 // หากยังไม่ได้ใส่ URL ให้บันทึกเฉพาะหน้าเว็บเป็นตัวอย่าง
                 setTimeout(() => {
@@ -622,6 +791,12 @@
             renderTable();
             form.reset();
             clearSignature();
+            // รีเซ็ตช่องสารน้ำและยาให้กลับมาเหลืออย่างละ 1 ช่องว่าง
+            document.getElementById('fluid-list').innerHTML = '';
+            document.getElementById('med-list').innerHTML = '';
+            addFluidRow();
+            addMedRow();
+
             document.querySelector('input[name="urgency"][value="ปกติ"]').checked = true;
             showModal('บันทึกสำเร็จ', `ส่งข้อมูลผู้ป่วย ${transferData.patientName} (${transferData.id}) เรียบร้อยแล้ว`, true);
         }
@@ -655,9 +830,334 @@
 
         // เรียกโหลดข้อมูลทันทีที่เปิดหน้าเว็บขึ้นมา
         loadTransfersFromSheet();
+
+        // ฟังก์ชันเพิ่มรายการสารน้ำ (1 ช่องต่อ 1 รายการ)
+        function addFluidRow(value = '') {
+            const container = document.getElementById('fluid-list');
+            const div = document.createElement('div');
+            div.className = 'flex items-center gap-2';
+            div.innerHTML = `
+                <input type="text" placeholder="เช่น 0.9% NSS 1,000 ml IV drip 80 ml/hr หรือ Acetar KVO" value="${value}" class="fluid-item flex-grow px-3 py-1.5 border border-slate-300 rounded-lg outline-none text-sm focus:border-indigo-500 bg-white">
+                <button type="button" onclick="this.parentElement.remove()" class="text-slate-400 hover:text-red-500 p-2 transition" title="ลบรายการ"><i class="fa-solid fa-trash-can"></i></button>
+            `;
+            container.appendChild(div);
+        }
+
+        // ฟังก์ชันเพิ่มรายการยา (1 ช่องต่อ 1 รายการ)
+        function addMedRow(value = '') {
+            const container = document.getElementById('med-list');
+            const div = document.createElement('div');
+            div.className = 'flex items-center gap-2';
+            div.innerHTML = `
+                <input type="text" placeholder="เช่น Norepinephrine (4:250) drip 10 mcg/min หรือ Ceftriaxone 2 g IV" value="${value}" class="med-item flex-grow px-3 py-1.5 border border-slate-300 rounded-lg outline-none text-sm focus:border-indigo-500 bg-white">
+                <button type="button" onclick="this.parentElement.remove()" class="text-slate-400 hover:text-red-500 p-2 transition" title="ลบรายการ"><i class="fa-solid fa-trash-can"></i></button>
+            `;
+            container.appendChild(div);
+        }
+
+        // สร้างแถวตั้งต้นอย่างละ 1 ช่องเมื่อเปิดหน้าเว็บ
+        addFluidRow();
+        addMedRow();
+
+        // ฟังก์ชันสั่งพิมพ์ข้อมูลจริง ตามรูปแบบของไฟล์ "ตัวอย่างฟอร์มสำหรับการพิมพ์.html"
+        window.printOfficialDoc = function (id) {
+            const item = transfers.find(t => t.id === id);
+            if (!item) {
+                showModal('ข้อผิดพลาด', 'ไม่พบข้อมูลรายการที่ต้องการพิมพ์', false);
+                return;
+            }
+
+            let vsRows = '';
+            if (item.vsData && item.vsData.length > 0) {
+                item.vsData.forEach((v, idx) => {
+                    if (v.time || v.bp || v.hr || v.rr || v.o2) {
+                        vsRows += `
+                            <tr>
+                                <td>${idx + 1}</td>
+                                <td>${v.time || '-'}</td>
+                                <td>${v.bp || '-'}</td>
+                                <td>${v.hr || '-'}</td>
+                                <td>${v.rr || '-'}</td>
+                                <td>${v.o2 ? v.o2 + ' %' : '-'}</td>
+                            </tr>
+                        `;
+                    }
+                });
+            }
+            if (!vsRows) {
+                vsRows = `<tr><td colspan="6" style="padding: 8px; color: #64748b;">- ไม่มีบันทึกการติดตามสัญญาณชีพระหว่างทาง -</td></tr>`;
+            }
+
+            const ivAndMedsList = [];
+            if (item.ivFluids && item.ivFluids !== '-') ivAndMedsList.push(`สารน้ำ: ${item.ivFluids}`);
+            if (item.medications && item.medications !== '-') ivAndMedsList.push(`ยา/Drip: ${item.medications}`);
+            const ivMedContent = ivAndMedsList.length > 0 ? ivAndMedsList.join(' , ') : 'ไม่มี / ไม่ได้ให้';
+
+            const todayStr = new Date().toLocaleDateString('th-TH', { day: 'numeric', month: 'short', year: 'numeric' });
+
+            const printHtml = `
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบบันทึกและประเมินความปลอดภัยในการส่งต่อผู้ป่วย - ${item.hn}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 10mm 15mm 10mm 15mm;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #f1f5f9;
+            color: #0f172a;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .toolbar {
+            width: 100%;
+            max-width: 210mm;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        .btn-print {
+            background-color: #0284c7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-family: 'Sarabun', sans-serif;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .a4-sheet {
+            width: 210mm;
+            background: #ffffff;
+            padding: 12mm 15mm;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-radius: 4px;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .hospitallogo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+        .hospital-logo {
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
+        }
+        .doc-header {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #0284c7;
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+        }
+        .header-title { flex-grow: 1; }
+        .header-title h1 {
+            margin: 0;
+            font-size: 18px;
+            color: #0369a1;
+            font-weight: 700;
+        }
+        .header-title p {
+            margin: 2px 0 0 0;
+            font-size: 13px;
+            color: #475569;
+        }
+        .header-meta { text-align: right; font-size: 12px; }
+        .doc-badge {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 3px;
+        }
+        .section-header {
+            background-color: #f0f9ff;
+            border-left: 4px solid #0284c7;
+            padding: 4px 8px;
+            font-weight: 600;
+            font-size: 13px;
+            color: #0369a1;
+            margin: 8px 0 4px 0;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 20px;
+            padding: 0 4px;
+            font-size: 13px;
+        }
+        .info-row { display: flex; align-items: baseline; }
+        .info-label {
+            width: 130px;
+            font-weight: 600;
+            color: #334155;
+            flex-shrink: 0;
+        }
+        .info-val {
+            flex-grow: 1;
+            border-bottom: 1px dotted #94a3b8;
+            color: #0f172a;
+        }
+        table.vs-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+        table.vs-table th, table.vs-table td {
+            border: 1px solid #cbd5e1;
+            padding: 4px 6px;
+            text-align: center;
+        }
+        table.vs-table th {
+            background-color: #f8fafc;
+            color: #334155;
+            font-weight: 600;
+        }
+        .box-note {
+            border: 1px solid #cbd5e1;
+            background-color: #fafbfc;
+            border-radius: 4px;
+            padding: 6px 10px;
+            font-size: 12.5px;
+            color: #1e293b;
+            min-height: 32px;
+        }
+        .sign-area {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 14px;
+            padding: 0 20px;
+        }
+        .sign-col { width: 42%; text-align: center; font-size: 12px; }
+        .sign-line {
+            border-top: 1px dotted #64748b;
+            margin-top: 8px;
+            padding-top: 4px;
+        }
+        .sig-preview {
+            max-height: 38px;
+            max-width: 130px;
+            display: block;
+            margin: 0 auto;
+        }
+        @media print {
+            body { background: none; margin: 0; padding: 0; }
+            .toolbar { display: none !important; }
+            .a4-sheet { box-shadow: none; padding: 0; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="toolbar">
+        <button class="btn-print" onclick="window.print()">🖨️ พิมพ์เอกสาร / บันทึกเป็น PDF</button>
+    </div>
+    <div class="a4-sheet">
+        <div class="hospitallogo">
+            <img src="https://scontent.fphs3-1.fna.fbcdn.net/v/t39.30808-6/847033225_1088261284249021_8343004459752620171_n.jpg?stp=dst-jpg_tt6&cstp=mx286x259&ctp=s286x259&_nc_cat=111&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=5Lbo7bpNd2UQ7kNvwGXdXJE&_nc_oc=Adq23XWIL5UoxO4sf1ZRjE0mK3zVehtsFc7kKZjpJaYl1INckB0ZMVV493CO7HdL9Aw&_nc_zt=23&_nc_ht=scontent.fphs3-1.fna&_nc_gid=mZKHve8r9AddKowjGSyzsA&_nc_ss=7b2a8&oh=00_AQMnwFzc7NCNqVNt7VC7H90LjPLBzILPrFnIOYALM2U1Zg&oe=6AD31382" alt="Logo 1" class="hospital-logo">
+            <img src="https://scontent.fphs3-1.fna.fbcdn.net/v/t39.30808-6/847804637_1088260367582446_1862092916521213057_n.jpg?stp=dst-jpg_tt6&cstp=mx500x500&ctp=s500x500&_nc_cat=101&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=0uIWvXKGYHIQ7kNvwGNCwjj&_nc_oc=AdqIptEVGERlAwcwKqVjPkiez3GxZgPOAXCOZCT_P7bM4ewsotEC9XmtcvyB3q_ELcU&_nc_zt=23&_nc_ht=scontent.fphs3-1.fna&_nc_gid=ksxIkcbCIiX8R7z8LYUe7g&_nc_ss=7b2a8&oh=00_AQNfYOaQowSA6gUm14v0inG8CntQ-eLK7UCsDyi1WWmE7w&oe=6AD2E9CA" alt="Logo 2" class="hospital-logo">
+            <img src="https://scontent.fphs3-1.fna.fbcdn.net/v/t39.30808-6/843206031_1088260364249113_7900190074922328156_n.jpg?stp=dst-jpg_tt6&cstp=mx591x591&ctp=s591x591&_nc_cat=103&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=vYQ1FN63jzkQ7kNvwG49p3o&_nc_oc=Ado_91VXpnxjPRJ9tKaOqqC1P4p2kS08O2QWhGszZZPjVqY8R8vwrSEVNz-TWXMJgjw&_nc_zt=23&_nc_ht=scontent.fphs3-1.fna&_nc_gid=jtTNeHjiQKteTxYGiZ53WQ&_nc_ss=7b2a8&oh=00_AQOufsQLhtdLTs4293U3HoJROdZXOgWS6JAe9cx0wKnnUg&oe=6AD31642" alt="Logo 3" class="hospital-logo">
+        </div>
+        <div class="doc-header">
+            <div class="header-title">
+                <h1>แบบบันทึกและประเมินความปลอดภัยในการส่งต่อผู้ป่วย</h1>
+                <p>กลุ่มงานการพยาบาลผู้ป่วยอุบัติเหตุและฉุกเฉิน</p>
+                <p>ภารกิจด้านการพยาบาล โรงพยาบาลพุทธชินราช พิษณุโลก</p>
+            </div>
+            <div class="header-meta">
+                <span class="doc-badge">ID: ${item.id}</span>
+                <div>วันที่: ${todayStr}</div>
+                <div>เวลา: ${item.time} น.</div>
+            </div>
+        </div>
+
+        <div class="section-header">1. ข้อมูลทั่วไปผู้ป่วยและการส่งต่อ (Patient & Route)</div>
+        <div class="grid-2">
+            <div class="info-row"><span class="info-label">ชื่อ-นามสกุล:</span><span class="info-val">${item.patientName}</span></div>
+            <div class="info-row"><span class="info-label">อายุ:</span><span class="info-val">${item.age} ปี</span></div>
+            <div class="info-row"><span class="info-label">เลขประจำตัวผู้ป่วย (HN):</span><span class="info-val"><strong>${item.hn}</strong></span></div>
+            <div class="info-row"><span class="info-label">ระดับความเร่งด่วน:</span><span class="info-val" style="font-weight: bold; color: ${item.urgency === 'ฉุกเฉิน' ? '#dc2626' : item.urgency === 'ด่วน' ? '#d97706' : '#0f172a'};">${item.urgency}</span></div>
+            <div class="info-row"><span class="info-label">หน่วยงานต้นทาง:</span><span class="info-val">${item.originDept}</span></div>
+            <div class="info-row"><span class="info-label">ระดับการส่งต่อ:</span><span class="info-val"><strong>${item.transferLevel || 'Level 0'}</strong></span></div>
+            <div class="info-row"><span class="info-label">หน่วยงานปลายทาง:</span><span class="info-val">${item.destDept}</span></div>
+        </div>
+        <div style="margin-top: 5px; padding: 0 4px;">
+            <div class="info-row"><span class="info-label">การวินิจฉัยโรค (Diagnosis):</span><span class="info-val">${item.diagnosis || '-'}</span></div>
+        </div>
+
+        <div class="section-header">2. บันทึกสัญญาณชีพขณะนำส่ง (Vital Signs Monitoring)</div>
+        <table class="vs-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">ครั้งที่</th>
+                    <th style="width: 18%;">เวลา (Time)</th>
+                    <th style="width: 20%;">BP (mmHg)</th>
+                    <th style="width: 18%;">HR/PR (/min)</th>
+                    <th style="width: 16%;">RR (/min)</th>
+                    <th style="width: 18%;">O2 Sat (%)</th>
+                </tr>
+            </thead>
+            <tbody>${vsRows}</tbody>
+        </table>
+
+        <div class="section-header">3. การให้สารน้ำและยาขณะนำส่ง (IV Fluids & Medications)</div>
+        <div class="box-note">${ivMedContent}</div>
+
+        <div class="section-header">4. เหตุการณ์ไม่พึงประสงค์ขณะส่งต่อ (Adverse Events)</div>
+        <div class="box-note">${item.adverseEvent && item.adverseEvent !== '-' ? item.adverseEvent : 'ไม่มีเหตุการณ์ไม่พึงประสงค์ (อาการและสัญญาณชีพของผู้ป่วยคงที่ตลอดระยะเวลาการนำส่ง)'}</div>
+
+        <div class="section-header">5. การประเมินสภาพแรกรับของหน่วยงานปลายทาง (Destination Assessment)</div>
+        <div class="box-note">${item.assessment && item.assessment !== '-' ? item.assessment : 'ผู้ป่วยรู้สึกตัวดี สัญญาณชีพคงที่ ปฏิบัติตามแผนการรักษาต่อเนื่อง และรับตัวเข้าหอผู้ป่วยเรียบร้อย'}</div>
+
+        <div class="sign-area">
+            <div class="sign-col">
+                <div style="height: 38px;"></div>
+                <div class="sign-line">( พว. ................................................. )</div>
+                <div style="font-weight: 600;">พยาบาลผู้นำส่ง (หน่วยงานต้นทาง)</div>
+                <div style="font-size: 11px; color: #64748b; margin-top: 2px;">วันที่: ${todayStr} เวลา: ${item.time} น.</div>
+            </div>
+
+            <div class="sign-col">
+                <div style="height: 38px; display: flex; align-items: center; justify-content: center;">
+                    ${item.signatureImg ? `<img src="${item.signatureImg}" class="sig-preview" alt="ลายมือชื่อ">` : '<span style="font-size: 11px; color: #94a3b8;">(ลายมือชื่อผู้รับ)</span>'}
+                </div>
+                <div class="sign-line">( พว. ................................................. )</div>
+                <div style="font-weight: 600;">พยาบาลผู้รับผู้ป่วย (หน่วยงานปลายทาง)</div>
+                <div style="font-size: 11px; color: #64748b; margin-top: 2px;">วันที่: ${todayStr} เวลา: ......... น.</div>
+            </div>
+        </div>
+    </div>
+    <script>window.onload = function() { window.print(); };<\/script>
+</body>
+</html>`;
+
+            const printWin = window.open('', '_blank', 'width=900,height=950');
+            printWin.document.open();
+            printWin.document.write(printHtml);
+            printWin.document.close();
+        };
     </script>
 </body>
-</html>
-    </script>
-</body>
+
 </html>
