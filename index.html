@@ -812,7 +812,7 @@
 
             const senderName = document.getElementById('senderName').value.trim();
             const senderSig = sCanvas.toDataURL('image/png');
-            const adverseEvent = (!adverseInput || adverseInput === '-') ? 'ไม่มีเหตุการณ์ไม่พึงประสงค์ (อาการและสัญญาณชีพคงที่)' : adverseInput;
+            const adverseEvent = 'ไม่มีเหตุการณ์ไม่พึงประสงค์ (อาการและสัญญาณชีพคงที่)';
 
             const newTransfer = {
                 id: 'TRF-' + Math.floor(1000 + Math.random() * 9000),
