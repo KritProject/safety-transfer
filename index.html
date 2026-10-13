@@ -777,6 +777,7 @@
             const destDept = document.getElementById('destDept').value;
             const diagnosis = document.getElementById('diagnosis').value.trim();
             const urgency = document.querySelector('input[name="urgency"]:checked').value;
+            const transferLevel = document.getElementById('transferLevel').value;
 
             // รวมสารน้ำทุกรายการที่กรอก คั่นด้วยเครื่องหมายจุลภาค (,)
             const fluidsList = [];
@@ -835,7 +836,7 @@
                 senderName,
                 senderSig,
                 receiverName: '',
-                receiverSig: ''
+                receiverSig: '',
             };
 
             const originalBtnContent = submitBtn.innerHTML;
@@ -875,7 +876,7 @@
             transfers.unshift(transferData);
             renderTable();
             form.reset();
-            clearSignature();
+            clearSenderSig();
             // รีเซ็ตช่องสารน้ำและยาให้กลับมาเหลืออย่างละ 1 ช่องว่าง
             document.getElementById('fluid-list').innerHTML = '';
             document.getElementById('med-list').innerHTML = '';
